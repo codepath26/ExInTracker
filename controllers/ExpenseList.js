@@ -66,11 +66,13 @@ exports.downloadExpenses = async (req ,res)=>{
 
 exports.getDetails = async (req, res, next) => {
   try {
-    // console.log(req.user.userId , "this");
+     console.log(req.user.userId , "this");
+     console.log("ii am here");
     let data = await Expenses.findAll({ where: { userId: req.user.userId } });
    
     res.status(200).json(data);
   } catch (err) {
+    console.log('user is not able to created')
     return res.status(500).json({ message: "user not able to create" });
   }
 };

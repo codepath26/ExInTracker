@@ -3,6 +3,7 @@ const express = require('express')
 const cors = require('cors')
 const bodyParser = require('body-parser');
 const sequelize = require('./utils/database');
+const path = require('path')
 
 const port = process.env.PORT 
 const User = require('./models/user');
@@ -22,6 +23,10 @@ app.use(cors());
 app.use(userRoutes);
 app.use(loginRoutes);
 app.use('/password', ForgotPasswordRoutes);
+app.use((req,res)=>{
+  console.log(req.url)
+  res.sendFile(path.join(__dirname,`public/${req.url}`))
+})
 
 User.hasMany(Expense)
 Expense.belongsTo(User , { onDelete: 'CASCADE'})
