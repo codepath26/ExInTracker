@@ -1,13 +1,19 @@
 require('dotenv').config(); 
 const jwt = require("jsonwebtoken");
 
-exports.authenticateUser = (req,res ,next)=>{
-  const token = req.header("Authorization");
-  const user = jwt.verify(token,process.env.JSONWEB_SECRET_KEY);
+exports.authenticateUser = async (req,res ,next)=>{
+ try{
+   console.log("user authemtication")
+   const token = req.header("Authorization");
+   const user = jwt.verify(token,process.env.JSONWEB_SECRET_KEY);
+   console.log(user)
+   req.user = user ;
+   next();
+  }catch(err){
 
-  // this is gives the userid make this very simple using the disign patern
-  // const userId = Number(jwt.verify(token,process.env.JSONWEB_SECRET_KEY));
-  console.log(user)
-  req.user = user ;
-  next();
+    return res.status(200).json({success:false})
+  }
+
+ 
+  
 }
