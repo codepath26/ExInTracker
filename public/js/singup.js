@@ -15,7 +15,8 @@ e.preventDefault();
   }
   try
   {
-    let user = await axios.post(`http://23.20.229.193:3000/user/signup` , obj)
+    let user = await axios.post(`http://54.172.219.179
+:3000/user/signup` , obj)
     console.log(user.ispremiumuser)
     localStorage.setItem('ispremium' ,user.ispremiumuser)
      username.value  = "",
@@ -24,7 +25,7 @@ e.preventDefault();
      window.location.href = "../html/login.html"
     
     }catch(err){
-      // console.log(err)
+
       if(err.response.status === 403){
         console.log(err.response.data.message);
       }else{

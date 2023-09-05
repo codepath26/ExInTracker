@@ -1,4 +1,4 @@
-// geeting the element
+
 const amount = document.getElementById("ExpenseAmount");
 const description = document.getElementById("Description");
 const showLeaderBoard = document.getElementById("leaderBoard");
@@ -33,7 +33,8 @@ async function fetchData() {
       showLeaderBoard.style.display = "none";
     }
     
-    let response = await axios.get("http://23.20.229.193:3000/expenseDetails", {
+    let response = await axios.get("http://54.172.219.179
+:3000/expenseDetails", {
       headers: { Authorization: token },
     });
 
@@ -59,7 +60,8 @@ async function addExpenses(e) {
   try {
     let token = localStorage.getItem("token");
     let response = await axios.post(
-      "http://23.20.229.193:3000/expenseDetails",
+      "http://54.172.219.179
+:3000/expenseDetails",
       obj,
       {
         headers: {
@@ -90,7 +92,8 @@ async function modified(e) {
     const id = li.querySelector("#userid").value;
   
     try {
-      await axios.delete(`http://23.20.229.193:3000/expenseDetails/${id}`);
+      await axios.delete(`http://54.172.219.179
+:3000/expenseDetails/${id}`);
       items.removeChild(li);
     } catch (err) {
       console.log(err);
@@ -101,13 +104,15 @@ async function modified(e) {
     const id = li.querySelector("#userid").value;
     try {
       let response = await axios.get(
-        `http://23.20.229.193:3000/expenseDetails/${id}`
+        `http://54.172.219.179
+:3000/expenseDetails/${id}`
       );
       amount.value = response.data.amount;
       description.value = response.data.description;
       category.value = response.data.category;
       items.removeChild(li);
-      await axios.delete(`http://23.20.229.193:3000/expenseDetails/${id}`);
+      await axios.delete(`http://54.172.219.179
+:3000/expenseDetails/${id}`);
     } catch (err) {
       console.log(err);
     }
@@ -119,19 +124,20 @@ async function modified(e) {
 
 
 function DisplayData(obj) {
-
+ console.log('here')
   items.innerHTML += `<li class="list-group-item mt-2">Amount :${obj.amount}, Description :${obj.description}, Category : ${obj.category}<button class="btn btn-success btn-sm mx-1 edit float-end">Edit</button><button class="btn btn-danger btn-sm float-end delete mx-1">Delete</button><input type="hidden" name="userid" id="userid" value="${obj.id}"></li>`;
 }
 
 
-//adding  the Payment gatway razorpay
+
 
 
 async function payment(e) {
   try {
     let token = localStorage.getItem("token");
     let response = await axios.get(
-      "http://23.20.229.193:3000/premium/getPremiumMemberShip",
+      "http://54.172.219.179
+:3000/premium/getPremiumMemberShip",
       {
         headers: { Authorization: token },
       }
@@ -143,7 +149,8 @@ async function payment(e) {
       handler: async function (response) {
         try {
           await axios.post(
-            `http://23.20.229.193:3000/premium/updatetransactionstatus`,
+            `http://54.172.219.179
+:3000/premium/updatetransactionstatus`,
             {
               order_id: options.order_id,
               payment_id: response.razorpay_payment_id,
@@ -154,7 +161,7 @@ async function payment(e) {
           localStorage.setItem("ispremium", true);
           isPremiumuser.style.display = "block";
           paybutton.style.display = "none";
-          showLeaderBoard.style.display = "none";
+          showLeaderBoard.style.display = "block";
         } catch (err) {
           console.log(err.message, "thisss");
         }
@@ -176,7 +183,8 @@ async function payment(e) {
 
 async function leaderBoard() {
   let response = await axios.get(
-    "http://23.20.229.193:3000/premium/leaderBoard"
+    "http://54.172.219.179
+:3000/premium/leaderBoard"
   );
 
  
@@ -194,7 +202,8 @@ async function downloadExpenses (e){
   try{
 
     let token = localStorage.getItem("token");
-    let response = await axios.get('http://23.20.229.193:3000/download',{
+    let response = await axios.get('http://54.172.219.179
+:3000/download',{
       headers: { Authorization: token}
     })
   if(response.status === 200){

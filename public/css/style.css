@@ -6,17 +6,17 @@ body{
   align-items: center;
   min-height: 100vh;
   font-family: "Jost" , sans-serif;
-  background : linear-gradient(to bottom , #0f0c29,#302b63 , #24243e);
-  border: 1 px solid blueviolet !important;
+
   min-height: 100vh;
 }
 .main{
   width: 350px;
-  height: 500px;
+ padding-bottom: 10px;
   overflow: hidden;
+  background : linear-gradient(to bottom , #0f0c29,#302b63 , #24243e);
 
   /* background: url('01.jpg') no-repeat center / cover; */
-  border:  1px solid green;
+
   border-radius: 10px;
   box-shadow: 5px 20px  50px #000;
   padding-top:  10px;
@@ -34,7 +34,7 @@ label{
   font-size: 2.3rem;
   display: flex;
   justify-content: center;
-  margin:  60px;
+  margin:  10px;
   font-weight: bold;
   cursor: pointer;
   transition: 0.5s ease-in-out;
@@ -53,7 +53,7 @@ input{
 }
 button{
   width: 60%;
-  height: 40px;
+  height: 30px;
   margin: 10px auto;
   display: block;
   color: #fff;

@@ -139,6 +139,7 @@ exports.updateDetail = async (req, res, next) => {
   let expense = await Expenses.updateByPk(listtId);
   const id = expense.userId;
   const user = User.findByPk(id);
+  // actualy we don't need this for this time we also called the delete so that if we subtract at this time then in the delet this substract one more time then toalvalue make the coflict and it's create mesure issue;
   const expenseAmount = parseInt(expense.amount)
   let total = user.totalExpenses - expenseAmount ;
   user.update({totalExpenses : total})

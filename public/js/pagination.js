@@ -14,7 +14,8 @@ async function setrow(e){
   const rowpara = row.value;
   try{
     const page =1;
-    let res = await axios.get(`http://23.20.229.193:3000/products?page=${page}&row=${rowpara}`)
+    let res = await axios.get(`http://54.172.219.179
+:3000/products?page=${page}&row=${rowpara}`)
     const {products , ...pagedata} = res.data;
     listproduct(res.data.products);
     showpagination(pagedata);
@@ -31,7 +32,8 @@ async function fetchData() {
   try{
     const rowpara = localStorage.getItem('row')
   
-    let res = await axios.get(`http://23.20.229.193:3000/products?page=${page}&row=${rowpara}`)
+    let res = await axios.get(`http://54.172.219.179
+:3000/products?page=${page}&row=${rowpara}`)
     const {products , ...pagedata} = res.data;
     listproduct(res.data.products);
     showpagination(pagedata);
@@ -86,7 +88,8 @@ function showpagination ({
 async function getProducts(page){
   const rowpara = localStorage.getItem('row');
   console.log(`ropara==>${rowpara}`)
-  let res = await axios.get(`http://23.20.229.193:3000/products?page=${page}&row=${rowpara}`)
+  let res = await axios.get(`http://54.172.219.179
+:3000/products?page=${page}&row=${rowpara}`)
   const {products , ...pagedata} = res.data;
   listproduct(res.data.products);
   showpagination(pagedata);

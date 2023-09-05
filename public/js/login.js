@@ -18,7 +18,8 @@ let obj = {
   password : password.value
 }
  
-  let response = await axios.post('http://23.20.229.193:3000/user/login' , obj);
+  let response = await axios.post('http://54.172.219.179
+:3000/user/login' , obj);
   const token = response.data.token;
   email.value = "",
   password.value = "" 

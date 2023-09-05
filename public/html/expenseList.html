@@ -54,26 +54,26 @@
         Download Expenses
       </button>
     </div>
-    <div class="display mt-2 w-100 d-none">
+    <div class="display mt-2 w-100 ">
       <ul id="items" class="list-group"></ul>
     </div>
     <div class="display mt-2 w-100">
       <ul id="leaderborditem" class="list-group text-center"></ul>
     </div>
 
-    <ul id="productList" class="list-group w-50 m-auto"></ul>
+    <ul id="productList" class="list-group w-50 m-auto d-none"></ul>
 
-    <div id="pagination" class="mb-5 text-center mt-3"></div>
+    <div id="pagination" class="mb-5 text-center mt-3 d-none">paggination display hide for this time</div>
     <div class="text-center bg-transparent">
       <form id="rowperpage" >
-        <select name="rowperpage" id="row" class="custom-select custom-select-lg mb-3 d-block m-auto">
+        <select name="rowperpage" id="row" class="custom-select custom-select-lg mb-3 d-block m-auto d-none">
           <option value="5" selected>5</option>
           <option value="10">10</option>
           <option value="20">20</option>
           <option value="30">30</option>
           <option value="40">40</option>
         </select>
-        <button type="submit" class="btn   btn-dark px-4 fw-bold">Set</button>
+        <button type="submit" class="btn   btn-dark px-4 fw-bold d-none">Set</button>
       </form>
     </div>
     <script src="../js/expenseList.js"></script>
