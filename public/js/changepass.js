@@ -15,7 +15,7 @@ async function forgotPass(e){
   const obj = { 
     email : email.value ,
   }
-  axios.post('http://23.20.229.193:3000/password/forgotpassword',obj).then(response => {
+  axios.post('http://localhost:3000/password/forgotpassword',obj).then(response => {
     if(response.status === 202){
        showmes.innerHTML += '<div style="color:red;">Mail Successfuly Sent <div>'
     } else {
