@@ -26,15 +26,16 @@ async function fetchData() {
   
     let token = localStorage.getItem("token");
     let ispremium = localStorage.getItem("ispremium");
-    if (ispremium) {
+    console.log("user is primium or not" , ispremium);
+    if (ispremium && ispremium !== "undefined") {
+      console.log("i am herer why")
       isPremiumuser.style.display = "block";
       paybutton.style.display = "none";
     } else {
       showLeaderBoard.style.display = "none";
     }
     
-    let response = await axios.get("http://54.172.219.179
-:3000/expenseDetails", {
+    let response = await axios.get("http://localhost:3000/expenseDetails", {
       headers: { Authorization: token },
     });
 
@@ -60,8 +61,7 @@ async function addExpenses(e) {
   try {
     let token = localStorage.getItem("token");
     let response = await axios.post(
-      "http://54.172.219.179
-:3000/expenseDetails",
+      "http://localhost:3000/expenseDetails",
       obj,
       {
         headers: {
@@ -92,8 +92,7 @@ async function modified(e) {
     const id = li.querySelector("#userid").value;
   
     try {
-      await axios.delete(`http://54.172.219.179
-:3000/expenseDetails/${id}`);
+      await axios.delete(`http://localhost:3000/expenseDetails/${id}`);
       items.removeChild(li);
     } catch (err) {
       console.log(err);
@@ -104,15 +103,13 @@ async function modified(e) {
     const id = li.querySelector("#userid").value;
     try {
       let response = await axios.get(
-        `http://54.172.219.179
-:3000/expenseDetails/${id}`
+        `http://localhost:3000/expenseDetails/${id}`
       );
       amount.value = response.data.amount;
       description.value = response.data.description;
       category.value = response.data.category;
       items.removeChild(li);
-      await axios.delete(`http://54.172.219.179
-:3000/expenseDetails/${id}`);
+      await axios.delete(`http://localhost:3000/expenseDetails/${id}`);
     } catch (err) {
       console.log(err);
     }
@@ -136,8 +133,7 @@ async function payment(e) {
   try {
     let token = localStorage.getItem("token");
     let response = await axios.get(
-      "http://54.172.219.179
-:3000/premium/getPremiumMemberShip",
+      "http://localhost:3000/premium/getPremiumMemberShip",
       {
         headers: { Authorization: token },
       }
@@ -149,8 +145,7 @@ async function payment(e) {
       handler: async function (response) {
         try {
           await axios.post(
-            `http://54.172.219.179
-:3000/premium/updatetransactionstatus`,
+            `http://localhost:3000/premium/updatetransactionstatus`,
             {
               order_id: options.order_id,
               payment_id: response.razorpay_payment_id,
@@ -183,12 +178,13 @@ async function payment(e) {
 
 async function leaderBoard() {
   let response = await axios.get(
-    "http://54.172.219.179
-:3000/premium/leaderBoard"
+    "http://localhost:3000/premium/leaderBoard"
   );
 
- 
   feature1.style.display = "block";
+  setTimeout(() => {
+    feature1.style.display = "none";
+  }, 4000);
   feature1.innerHTML += `<h2><b>Leader Board<b>`
   response.data.forEach((obj) => {
     feature1.innerHTML += `<li class='list-group-item mt-2'> Name :- ${obj.name} and TotalCost:- ${obj.totalExpenses ? obj.totalExpenses : 0} </li>`;
@@ -202,8 +198,7 @@ async function downloadExpenses (e){
   try{
 
     let token = localStorage.getItem("token");
-    let response = await axios.get('http://54.172.219.179
-:3000/download',{
+    let response = await axios.get('http://localhost:3000/download',{
       headers: { Authorization: token}
     })
   if(response.status === 200){
